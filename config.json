@@ -1,0 +1,42 @@
+{
+    "remote": {
+        "hostname": "服务器地址",
+        "port":     22,
+        "username": "用户名",
+        "password": "密码",
+        "charcode": "utf-8",
+
+        "fs_sep": "/",
+        "deploy_path": "部署目录",
+        "before_upload": [
+            "上传之前执行的服务器sh脚本; 引用变量: {全局变量名称}",
+            {
+                "vars": {
+                    "path": "/root/test"
+                },
+                "commands": [
+                    "rm -rf {path}"
+                ]
+            }
+        ],
+        "after_uploaded": [
+            "上传之后执行的服务器sh脚本"
+        ]
+    },
+    "local": {
+        "source_path": "上传的文件/文件夹",
+
+        "before_upload": [
+            "上传之前执行的本地脚本"
+        ],
+        "after_uploaded": [
+            "上传之后执行的本地脚本"
+        ]
+    },
+    "config": {
+        "display_path_length": "显示路径的长度, 用于美化输出的; int > 3",
+        "progress_bar_char": "上传进度条字符; str[0]",
+        "progress_bar_empty_char": "上传进度条剩余内容的字符; str[0]",
+        "progress_bar_count": "上传进度条字符数量; int > 0"
+    }
+}
