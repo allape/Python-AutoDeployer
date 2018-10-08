@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- tip: & = &amp; -->
+<!-- 除了标记为required的, 其余内容都是选填或demo -->
+<config>
+    <!-- 配置文件资源, 类似于maven的pom配置 -->
+    <!-- 使用${配置名称}在该配置文件任意处使用 -->
+    <!-- 如果没有搜索到匹配字段, 则不会进行替换(这样在命令中使用到"${}"时, 避免与配置名称相同时即可) -->
+    <!-- demos -->
+    <properties>
+        <workdir>/workdir/java</workdir>
+        <deploypath>/www/deploy</deploypath>
+    </properties>
+    <!-- 本机配置(可为空, 为空时只执行远程服务器命令) -->
+    <local>
+        <!-- 文件系统分隔符; default -->
+        <fs_sep>/</fs_sep>
+        <!-- 资源文件/文件夹; demo -->
+        <source>${workdir}/target/app.jar</source>
+        <!-- 上传前执行的命令集合; demo -->
+        <before>
+            <command>cd ${workdir} &amp; mvn package</command>
+        </before>
+        <!-- 上传后执行的命令集合; demo -->
+        <after>
+            <command>rm -Rf ${workdir}/target</command>
+        </after>
+    </local>
+    <!-- 远程配置 -->
+    <remote>
+        <!-- 服务器配置集群 -->
+        <servers>
+            <!-- 单个服务器设置 -->
+            <server>
+                <!-- 地址(必填) -->
+                <host required="true">****</host>
+                <!-- 部署目录(必填, 即使local不存在) -->
+                <target required="true">${deploypath}</target>
+                <!-- 端口; default -->
+                <port>22</port>
+                <!-- 账号; default -->
+                <username>root</username>
+                <!-- 密码; default: None -->
+                <password>****</password>
+                <!-- 字符编码; default -->
+                <charset>utf8</charset>
+                <!-- 文件系统分隔符; default -->
+                <fs_sep>/</fs_sep>
+                <!-- 上传前执行的命令集合; 在同一tty下执行的; demo -->
+                <before>
+                    <command>ls -al</command>
+                    <command>pwd</command>
+                    <command>rm -rf ${deploypath}</command>
+                </before>
+                <!-- 上传后执行的命令集合; demo -->
+                <after>
+                    <command>pwd</command>
+                    <command>ls -al</command>
+                </after>
+            </server>
+        </servers>
+    </remote>
+</config>

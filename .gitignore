@@ -3,3 +3,4 @@ test.*
 
 # python编译缓存文件
 __pycache__/
+.idea/
