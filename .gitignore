@@ -1,6 +1,9 @@
 # 测试配置文件
 test.*
 
+# 生产配置
+prod-configs/
+
 # python编译缓存文件
 __pycache__/
 .idea/
