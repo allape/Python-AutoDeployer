@@ -12,8 +12,8 @@ python3 自动部署脚本
     git clone https://gitee.com/AllenSnape/py-auto-deploy.git
     cd py-auto-deploy
     # 同步执行, 谁在前面谁先玩完儿
-    python app.py 配置文件1.json 配置文件2.json ...
+    python app.py 配置文件1.xml 配置文件2.xml ...
 ```
 
 ## 配置说明
-见config.xml
+见config.xml和config.xsd

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="properties">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:any processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="local">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="fs_sep" type="xs:string" default="/" minOccurs="0" />
+                            <xs:element name="source" type="xs:string" minOccurs="0" />
+                            <xs:element name="before" type="commandsType" minOccurs="0" />
+                            <xs:element name="after" type="commandsType" minOccurs="0" />
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="remote">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="servers">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="server" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:all>
+                                                    <xs:element name="host" type="requiredType" />
+                                                    <xs:element name="target" type="requiredType" />
+                                                    <xs:element name="port" type="xs:integer" default="22" minOccurs="0" />
+                                                    <xs:element name="username" type="xs:string" default="root" minOccurs="0" />
+                                                    <xs:element name="password" type="xs:string" default="" minOccurs="0" />
+                                                    <xs:element name="charset" type="xs:string" default="utf8" minOccurs="0" />
+                                                    <xs:element name="fs_sep" type="xs:string" default="/" minOccurs="0" />
+                                                    <xs:element name="before" type="commandsType" minOccurs="0" />
+                                                    <xs:element name="after" type="commandsType" minOccurs="0" />
+                                                </xs:all>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="commandsType">
+        <xs:sequence>
+            <xs:element name="command" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="requiredType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="required" type="xs:boolean" default="false"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:schema>

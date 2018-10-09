@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- tip: & = &amp; -->
 <!-- 除了标记为required的, 其余内容都是选填或demo -->
-<config>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="config.xsd">
     <!-- 配置文件资源, 类似于maven的pom配置 -->
     <!-- 使用${配置名称}在该配置文件任意处使用 -->
     <!-- 如果没有搜索到匹配字段, 则不会进行替换(这样在命令中使用到"${}"时, 避免与配置名称相同时即可) -->
