@@ -13,7 +13,7 @@ class ProgressBar:
     # 配置信息
     options = None
 
-    def __init__(self, options = None):
+    def __init__(self, options=None):
         # 检查参数
         if options is None:
             options = ProgressBarOptions()
@@ -114,23 +114,23 @@ class ProgressBar:
 
         for _ in cls.date_units[1:]:
             # 整理分时
-            if i in [1, 2] and s > 60:
+            if i in [0, 1] and s > 60:
                 s = s / 60
-            elif i == 3 and s > 24:
+            elif i == 2 and s > 24:
                 s = s / 24
-            elif i == 4 and s > 7:
+            elif i == 3 and s > 7:
                 s = s / 7
-            elif i == 5 and s > 4:
+            elif i == 4 and s > 4:
                 s = s * 7 / 30
-            elif i == 6 and s > 12:
+            elif i == 5 and s > 12:
                 s = s * 30 / 365
-            elif i == 7 and s > 100:
+            elif i == 6 and s > 100:
                 s = s / 100
             else:
                 break
             i += 1
 
-        return ('>99' + cls.date_units[-1]) if s > 100 and i == (len(cls.date_units) - 1) else (str(int(s)) + cls.date_units[i])
+        return ('>99' + cls.date_units[-1]) if s > 100 and i == (len(cls.date_units) - 1) else (str(round(s)) + cls.date_units[i])
 
 
 class ProgressBarOptions:
