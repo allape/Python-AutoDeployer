@@ -1,3 +1,6 @@
+# @author AllenSnape
+# @email allensnape@gmail.com
+
 import json
 import os
 import sys

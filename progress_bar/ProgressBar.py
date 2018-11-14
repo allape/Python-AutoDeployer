@@ -3,7 +3,11 @@ import time
 
 
 class ProgressBar:
-    """ 进度条 """
+    """
+        进度条
+        @author AllenSnape
+        @email allensnape@gmail.com
+    """
 
     # 指示器(菊花)的字符
     activity_indicator_chars = ['-', '\\', '|', '/']
