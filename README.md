@@ -7,8 +7,8 @@ python3 自动部署脚本
 ``` shell
     git clone https://github.com/allensnape/Python-AutoDeployer
     cd Python-AutoDeployer
-    # python -m pip install -r requirement.txt
-    pip3 install -r requirement.txt
+    # python -m pip install -r requirements.txt
+    pip3 install -r requirements.txt
 ```
 
 ## 配置说明 / Configuration
