@@ -1,12 +1,11 @@
 # @author AllenSnape
 # @email allensnape@gmail.com
 
-import json
 import os
 import sys
 import time
-import traceback
 import warnings
+import threading
 
 import paramiko
 import xml.etree.ElementTree as ET
@@ -298,9 +297,34 @@ if __name__ == '__main__':
     else:
         os.system('clear')
 
-    # 读取参数
-    if len(sys.argv) == 1:
-        raise Exception('请输入配置文件路径!')
+    # 配置文件集合
+    configs = []
+
+    # 是否以异步方式执行
+    run_in_asynchronized = False
 
     for arg in sys.argv[1:]:
-        read_config(arg)
+        if arg == '--async':
+            run_in_asynchronized = True
+        else:
+            if os.path.exists(arg):
+                configs.append(arg)
+            else:
+                warnings.warn(f'文件{arg}不存在!')
+
+    # 读取参数
+    if len(configs) == 0:
+        raise Exception('请输入配置文件路径!')
+
+    threads = []
+
+    for c in configs:
+        if run_in_asynchronized:
+            ac = threading.Thread(target=read_config, args=(c, ))
+            ac.start()
+            threads.append(ac)
+        else:
+            read_config(c)
+
+    for t in threads:
+        t.join()

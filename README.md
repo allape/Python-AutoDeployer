@@ -21,6 +21,6 @@ python3 自动部署脚本
     python ./app.py config.xml
     # 也可以执行多个配置文件, 先进先出 / Multi-deployment within FIFO
     #python ./app.py config.0.xml config.1.xml
-    # 使用多个配置文件时可以开启异步执行(log会交叉输出) / You can deploy projects asynchronized in multi-deployment
+    # 使用多个配置文件时可以开启异步执行(log会交叉输出) / You can deploy projects asynchronized in multi-deployment (warning: log in terminal will be mixed up)
     #python ./app.py config.0.xml config.1.xml --async
 ```
