@@ -290,13 +290,6 @@ def rp(properties, source):
 
 
 if __name__ == '__main__':
-
-    # 清空控制台
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
-
     # 配置文件集合
     configs = []
 
